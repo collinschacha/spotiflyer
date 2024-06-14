@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html data-theme="black">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{{url_for('static',filename='css/output.css')}}" rel="stylesheet">
+    <style>
+        .container-lines {
+            width: 100%;
+            height: calc(100vh - 5px);
+            margin-top: px;
+            /* adjust this value to match the height of your navbar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #000000;
+            --gap: 5em;
+            --line: 1px;
+            --color: rgba(255, 255, 255, 0.2);
+
+            background-image: linear-gradient(-90deg,
+                    transparent calc(var(--gap) - var(--line)),
+                    var(--color) calc(var(--gap) - var(--line) + 1px),
+                    var(--color) var(--gap)),
+                linear-gradient(0deg,
+                    transparent calc(var(--gap) - var(--line)),
+                    var(--color) calc(var(--gap) - var(--line) + 1px),
+                    var(--color) var(--gap));
+            background-size: var(--gap) var(--gap);
+        }
+
+
+        .sign-up {
+            font-weight: 700;
+            font-size: x-large;
+        }
+    </style>
+
+</head>
+
+<body class="bg-dark">
+    <div class="">
+        {% include 'navbar.html' %}
+        {% if msg %}
+             {% include "toast.html" %}
+        {% endif %}
+        <div class="container-lines h-full w-full flex flex-wrap justify-center items-center  gap-6">
+      
+            {% for pl in playlists_info %}
+            <div class="card w-1/3 bg-base-100 shadow-xl image-full">
+                
+                <figure><img src={{pl[0]}} alt="Playlist Card" class="w-[300px] h-[300px] object-cover object-center" />
+                </figure>
+                
+         
+                <div class="card-body">
+                    <h2 class="card-title flex justify-center items-center">{{pl[1]}}</h2>
+
+                    <div class="card-actions absolute bottom-0 right-0">
+                        <button class="btn btn-primary"><a href="{{ url_for('single_playlist', playlist_id=pl[2]) }}">Download Now</a></button>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+</body </html>

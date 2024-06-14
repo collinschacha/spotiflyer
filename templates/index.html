@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-theme="black">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{{url_for('static',filename='css/output.css')}}" rel="stylesheet">
+    <style>
+        .container-lines {
+            width: 100%;
+            height: calc(100vh - 5px);
+            background: #000000;
+            --gap: 5em;
+            --line: 1px;
+            --color: rgba(255, 255, 255, 0.2);
+
+            background-image: linear-gradient(-90deg,
+                    transparent calc(var(--gap) - var(--line)),
+                    var(--color) calc(var(--gap) - var(--line) + 1px),
+                    var(--color) var(--gap)),
+                linear-gradient(0deg,
+                    transparent calc(var(--gap) - var(--line)),
+                    var(--color) calc(var(--gap) - var(--line) + 1px),
+                    var(--color) var(--gap));
+            background-size: var(--gap) var(--gap);
+        }
+
+
+        .sign-up {
+            font-weight: 700;
+            font-size: x-large;
+        }
+    </style>
+
+</head>
+
+<body class="bg-dark">
+    <div class="">
+        {% include 'navbar.html' %}
+        <div class="container-lines flex md:flex-row flex-col items-start">
+            <h1 class="sign-up">Sign With You Spotify to continue</h1>
+
+        </div>
+
+    </div>
+
+
+
+</body </html>
